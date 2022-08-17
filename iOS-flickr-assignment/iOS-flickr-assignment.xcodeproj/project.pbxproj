@@ -16,6 +16,8 @@
 		20BDD23528AD27C200582708 /* iOS_flickr_assignmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BDD23428AD27C200582708 /* iOS_flickr_assignmentTests.swift */; };
 		20BDD23F28AD27C200582708 /* iOS_flickr_assignmentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BDD23E28AD27C200582708 /* iOS_flickr_assignmentUITests.swift */; };
 		20BDD24128AD27C200582708 /* iOS_flickr_assignmentUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BDD24028AD27C200582708 /* iOS_flickr_assignmentUITestsLaunchTests.swift */; };
+		20BDD24E28AD2C3800582708 /* ImageDownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BDD24D28AD2C3800582708 /* ImageDownloadService.swift */; };
+		20BDD25128AD361B00582708 /* ImageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BDD25028AD361B00582708 /* ImageItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		20BDD23A28AD27C200582708 /* iOS-flickr-assignmentUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS-flickr-assignmentUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20BDD23E28AD27C200582708 /* iOS_flickr_assignmentUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_flickr_assignmentUITests.swift; sourceTree = "<group>"; };
 		20BDD24028AD27C200582708 /* iOS_flickr_assignmentUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_flickr_assignmentUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		20BDD24D28AD2C3800582708 /* ImageDownloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadService.swift; sourceTree = "<group>"; };
+		20BDD25028AD361B00582708 /* ImageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,8 @@
 				20BDD21D28AD27C000582708 /* AppDelegate.swift */,
 				20BDD21F28AD27C000582708 /* SceneDelegate.swift */,
 				20BDD22128AD27C000582708 /* ViewController.swift */,
+				20BDD24D28AD2C3800582708 /* ImageDownloadService.swift */,
+				20BDD24F28AD35E800582708 /* Models */,
 				20BDD22328AD27C000582708 /* Main.storyboard */,
 				20BDD22628AD27C200582708 /* Assets.xcassets */,
 				20BDD22828AD27C200582708 /* LaunchScreen.storyboard */,
@@ -125,6 +131,14 @@
 				20BDD24028AD27C200582708 /* iOS_flickr_assignmentUITestsLaunchTests.swift */,
 			);
 			path = "iOS-flickr-assignmentUITests";
+			sourceTree = "<group>";
+		};
+		20BDD24F28AD35E800582708 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				20BDD25028AD361B00582708 /* ImageItem.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,8 +273,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				20BDD22228AD27C000582708 /* ViewController.swift in Sources */,
+				20BDD24E28AD2C3800582708 /* ImageDownloadService.swift in Sources */,
 				20BDD21E28AD27C000582708 /* AppDelegate.swift in Sources */,
 				20BDD22028AD27C000582708 /* SceneDelegate.swift in Sources */,
+				20BDD25128AD361B00582708 /* ImageItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

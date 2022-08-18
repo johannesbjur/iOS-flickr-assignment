@@ -7,19 +7,53 @@
 
 import UIKit
 
+protocol ImageCollectionViewControllerProtocol: UIViewController {
+    func addImageDataToCollectionView(imageData: Data)
+    func showError(with message: String)
+}
+
 final class ImageCollectionViewController: UIViewController {
     private var images: [UIImage] = []
     private let imageCollectionView = UICollectionView(frame: .zero,
                                                        collectionViewLayout: UICollectionViewFlowLayout())
+    private var presenter: ImageCollectionPresenterProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.presenter = ImageCollectionPresenter(imageDownloadService: ImageDownloadService(),
+                                                  viewDelegate: self)
         setupCollectionView()
+        Task {
+            await presenter?.viewDidLoad()
+        }
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         imageCollectionView.frame = view.bounds
+    }
+}
+// MARK: - ImageCollectionViewControllerProtocol functions
+extension ImageCollectionViewController: ImageCollectionViewControllerProtocol {
+    func addImageDataToCollectionView(imageData: Data) {
+        guard let image = UIImage(data: imageData) else { return }
+        images.append(image)
+        DispatchQueue.main.async {
+            self.imageCollectionView.reloadData()
+        }
+    }
+
+    func showError(with message: String) {
+        let alert = UIAlertController(title: "Error",
+                                      message: message,
+                                      preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Reload", style: .default) { [weak self] _ in
+            Task {
+                await self?.presenter?.viewDidLoad()
+            }
+        })
+        alert.addAction(UIAlertAction(title: "Close", style: .default))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

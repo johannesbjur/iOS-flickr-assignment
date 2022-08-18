@@ -22,7 +22,7 @@ enum ImageDownloadError: Error {
 
 protocol ImageDownloadServiceProtocol {
     func fetchImageItems() async throws -> [ImageItem]
-    func fetchImage(from url: URL) async throws -> Data
+    func fetchImageData(from url: URL) async throws -> Data
 }
 
 final class ImageDownloadService: ImageDownloadServiceProtocol {
@@ -41,7 +41,7 @@ final class ImageDownloadService: ImageDownloadServiceProtocol {
         }
     }
 
-    func fetchImage(from url: URL) async throws -> Data {
+    func fetchImageData(from url: URL) async throws -> Data {
         let (data, response) = try await URLSession.shared.data(from: url, delegate: nil)
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
             throw ImageDownloadError.apiResponseError

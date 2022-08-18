@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		20BDD21E28AD27C000582708 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BDD21D28AD27C000582708 /* AppDelegate.swift */; };
 		20BDD22028AD27C000582708 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BDD21F28AD27C000582708 /* SceneDelegate.swift */; };
-		20BDD22228AD27C000582708 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BDD22128AD27C000582708 /* ViewController.swift */; };
+		20BDD22228AD27C000582708 /* ImageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BDD22128AD27C000582708 /* ImageCollectionViewController.swift */; };
 		20BDD22528AD27C000582708 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20BDD22328AD27C000582708 /* Main.storyboard */; };
 		20BDD22728AD27C200582708 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20BDD22628AD27C200582708 /* Assets.xcassets */; };
 		20BDD22A28AD27C200582708 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20BDD22828AD27C200582708 /* LaunchScreen.storyboard */; };
@@ -18,6 +18,7 @@
 		20BDD24128AD27C200582708 /* iOS_flickr_assignmentUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BDD24028AD27C200582708 /* iOS_flickr_assignmentUITestsLaunchTests.swift */; };
 		20BDD24E28AD2C3800582708 /* ImageDownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BDD24D28AD2C3800582708 /* ImageDownloadService.swift */; };
 		20BDD25128AD361B00582708 /* ImageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BDD25028AD361B00582708 /* ImageItem.swift */; };
+		20BDD25328AE691D00582708 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BDD25228AE691D00582708 /* ImageCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +42,7 @@
 		20BDD21A28AD27C000582708 /* iOS-flickr-assignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-flickr-assignment.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20BDD21D28AD27C000582708 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20BDD21F28AD27C000582708 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		20BDD22128AD27C000582708 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		20BDD22128AD27C000582708 /* ImageCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewController.swift; sourceTree = "<group>"; };
 		20BDD22428AD27C000582708 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		20BDD22628AD27C200582708 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		20BDD22928AD27C200582708 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -53,6 +54,7 @@
 		20BDD24028AD27C200582708 /* iOS_flickr_assignmentUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_flickr_assignmentUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		20BDD24D28AD2C3800582708 /* ImageDownloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadService.swift; sourceTree = "<group>"; };
 		20BDD25028AD361B00582708 /* ImageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageItem.swift; sourceTree = "<group>"; };
+		20BDD25228AE691D00582708 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,9 +107,9 @@
 			children = (
 				20BDD21D28AD27C000582708 /* AppDelegate.swift */,
 				20BDD21F28AD27C000582708 /* SceneDelegate.swift */,
-				20BDD22128AD27C000582708 /* ViewController.swift */,
-				20BDD24D28AD2C3800582708 /* ImageDownloadService.swift */,
-				20BDD24F28AD35E800582708 /* Models */,
+				20BDD25428AE692700582708 /* View */,
+				20BDD25528AE693E00582708 /* Service */,
+				20BDD24F28AD35E800582708 /* Model */,
 				20BDD22328AD27C000582708 /* Main.storyboard */,
 				20BDD22628AD27C200582708 /* Assets.xcassets */,
 				20BDD22828AD27C200582708 /* LaunchScreen.storyboard */,
@@ -133,12 +135,29 @@
 			path = "iOS-flickr-assignmentUITests";
 			sourceTree = "<group>";
 		};
-		20BDD24F28AD35E800582708 /* Models */ = {
+		20BDD24F28AD35E800582708 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				20BDD25028AD361B00582708 /* ImageItem.swift */,
 			);
-			path = Models;
+			path = Model;
+			sourceTree = "<group>";
+		};
+		20BDD25428AE692700582708 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				20BDD22128AD27C000582708 /* ImageCollectionViewController.swift */,
+				20BDD25228AE691D00582708 /* ImageCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		20BDD25528AE693E00582708 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				20BDD24D28AD2C3800582708 /* ImageDownloadService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,7 +291,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20BDD22228AD27C000582708 /* ViewController.swift in Sources */,
+				20BDD25328AE691D00582708 /* ImageCollectionViewCell.swift in Sources */,
+				20BDD22228AD27C000582708 /* ImageCollectionViewController.swift in Sources */,
 				20BDD24E28AD2C3800582708 /* ImageDownloadService.swift in Sources */,
 				20BDD21E28AD27C000582708 /* AppDelegate.swift in Sources */,
 				20BDD22028AD27C000582708 /* SceneDelegate.swift in Sources */,

@@ -13,7 +13,7 @@
 		20BDD22528AD27C000582708 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20BDD22328AD27C000582708 /* Main.storyboard */; };
 		20BDD22728AD27C200582708 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20BDD22628AD27C200582708 /* Assets.xcassets */; };
 		20BDD22A28AD27C200582708 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20BDD22828AD27C200582708 /* LaunchScreen.storyboard */; };
-		20BDD23528AD27C200582708 /* iOS_flickr_assignmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BDD23428AD27C200582708 /* iOS_flickr_assignmentTests.swift */; };
+		20BDD23528AD27C200582708 /* ImageCollectionPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BDD23428AD27C200582708 /* ImageCollectionPresenterTests.swift */; };
 		20BDD23F28AD27C200582708 /* iOS_flickr_assignmentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BDD23E28AD27C200582708 /* iOS_flickr_assignmentUITests.swift */; };
 		20BDD24128AD27C200582708 /* iOS_flickr_assignmentUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BDD24028AD27C200582708 /* iOS_flickr_assignmentUITestsLaunchTests.swift */; };
 		20BDD24E28AD2C3800582708 /* ImageDownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BDD24D28AD2C3800582708 /* ImageDownloadService.swift */; };
@@ -49,7 +49,7 @@
 		20BDD22928AD27C200582708 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		20BDD22B28AD27C200582708 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20BDD23028AD27C200582708 /* iOS-flickr-assignmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS-flickr-assignmentTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		20BDD23428AD27C200582708 /* iOS_flickr_assignmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_flickr_assignmentTests.swift; sourceTree = "<group>"; };
+		20BDD23428AD27C200582708 /* ImageCollectionPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionPresenterTests.swift; sourceTree = "<group>"; };
 		20BDD23A28AD27C200582708 /* iOS-flickr-assignmentUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS-flickr-assignmentUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20BDD23E28AD27C200582708 /* iOS_flickr_assignmentUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_flickr_assignmentUITests.swift; sourceTree = "<group>"; };
 		20BDD24028AD27C200582708 /* iOS_flickr_assignmentUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_flickr_assignmentUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -124,7 +124,7 @@
 		20BDD23328AD27C200582708 /* iOS-flickr-assignmentTests */ = {
 			isa = PBXGroup;
 			children = (
-				20BDD23428AD27C200582708 /* iOS_flickr_assignmentTests.swift */,
+				20BDD23428AD27C200582708 /* ImageCollectionPresenterTests.swift */,
 			);
 			path = "iOS-flickr-assignmentTests";
 			sourceTree = "<group>";
@@ -316,7 +316,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20BDD23528AD27C200582708 /* iOS_flickr_assignmentTests.swift in Sources */,
+				20BDD23528AD27C200582708 /* ImageCollectionPresenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

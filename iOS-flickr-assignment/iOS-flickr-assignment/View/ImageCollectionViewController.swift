@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ImageCollectionViewControllerProtocol: UIViewController {
+protocol ImageCollectionViewControllerProtocol: AnyObject {
     func addImageDataToCollectionView(imageData: Data)
     func showError(with message: String)
 }

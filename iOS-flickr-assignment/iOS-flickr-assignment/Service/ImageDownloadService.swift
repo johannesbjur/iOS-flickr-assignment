@@ -29,10 +29,12 @@ final class ImageDownloadService: ImageDownloadServiceProtocol {
     func fetchImageItems() async throws -> [ImageItem] {
         let urlString = Constants.domain + Constants.path + Constants.parameters + Constants.apiKey
         guard let url = URL(string: urlString) else { throw ImageDownloadError.urlParsingError }
+
         let (data, response) = try await URLSession.shared.data(from: url, delegate: nil)
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
             throw ImageDownloadError.apiResponseError
         }
+
         do {
             let imageItem = try JSONDecoder().decode(ImageResponse.self, from: data)
             return imageItem.photos.photo

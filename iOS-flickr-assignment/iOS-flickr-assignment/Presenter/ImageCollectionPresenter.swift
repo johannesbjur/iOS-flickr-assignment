@@ -12,10 +12,10 @@ protocol ImageCollectionPresenterProtocol {
 }
 
 final class ImageCollectionPresenter: ImageCollectionPresenterProtocol {
-    private var imageDownloadService: ImageDownloadService
+    private var imageDownloadService: ImageDownloadServiceProtocol
     private weak var viewDelegate: ImageCollectionViewControllerProtocol?
     
-    init(imageDownloadService: ImageDownloadService, viewDelegate: ImageCollectionViewControllerProtocol) {
+    init(imageDownloadService: ImageDownloadServiceProtocol, viewDelegate: ImageCollectionViewControllerProtocol) {
         self.imageDownloadService = imageDownloadService
         self.viewDelegate = viewDelegate
     }

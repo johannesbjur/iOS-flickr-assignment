@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import UIKit
 
 protocol ImageCollectionPresenterProtocol {
     func viewDidLoad() async
+    func saveImageToPhotoAlbum(image: UIImage)
 }
 
 final class ImageCollectionPresenter: ImageCollectionPresenterProtocol {
@@ -38,9 +40,25 @@ final class ImageCollectionPresenter: ImageCollectionPresenterProtocol {
             case .imageParsingError:
                 message = "Image Parsing error"
             }
-            viewDelegate?.showError(with: message)
+            viewDelegate?.showReloadError(with: message)
         } catch {
-            viewDelegate?.showError(with: "Generic error")
+            viewDelegate?.showReloadError(with: "Generic error")
+        }
+    }
+
+    func saveImageToPhotoAlbum(image: UIImage) {
+        let imageSaver = ImageSaver(delegate: self)
+        imageSaver.saveToPhotoAlbum(image: image)
+    }
+}
+
+// MARK: - ImageSaverDelegate functions
+extension ImageCollectionPresenter: ImageSaverDelegate {
+    func saveComplete(error: Error?) {
+        if error != nil {
+            viewDelegate?.showAlert(with: "Error", message: "Failed to save image")
+        } else {
+            viewDelegate?.showAlert(with: "Image saved", message: "Images has been saved to your photo library")
         }
     }
 }

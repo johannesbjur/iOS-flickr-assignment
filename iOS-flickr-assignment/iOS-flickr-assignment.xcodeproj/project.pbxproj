@@ -20,6 +20,7 @@
 		20BDD25128AD361B00582708 /* ImageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BDD25028AD361B00582708 /* ImageItem.swift */; };
 		20BDD25328AE691D00582708 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BDD25228AE691D00582708 /* ImageCollectionViewCell.swift */; };
 		20BDD25728AE7C2D00582708 /* ImageCollectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BDD25628AE7C2D00582708 /* ImageCollectionPresenter.swift */; };
+		20BDD25C28AF962200582708 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BDD25B28AF962200582708 /* ImageSaver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		20BDD25028AD361B00582708 /* ImageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageItem.swift; sourceTree = "<group>"; };
 		20BDD25228AE691D00582708 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		20BDD25628AE7C2D00582708 /* ImageCollectionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionPresenter.swift; sourceTree = "<group>"; };
+		20BDD25B28AF962200582708 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				20BDD25028AD361B00582708 /* ImageItem.swift */,
+				20BDD25B28AF962200582708 /* ImageSaver.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				20BDD25728AE7C2D00582708 /* ImageCollectionPresenter.swift in Sources */,
 				20BDD22028AD27C000582708 /* SceneDelegate.swift in Sources */,
 				20BDD25128AD361B00582708 /* ImageItem.swift in Sources */,
+				20BDD25C28AF962200582708 /* ImageSaver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,6 +491,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS-flickr-assignment/Info.plist";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Allow app to save to photo library";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -514,6 +519,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS-flickr-assignment/Info.plist";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Allow app to save to photo library";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

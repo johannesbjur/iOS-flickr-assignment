@@ -9,11 +9,14 @@ import UIKit
 
 protocol ImageCollectionViewControllerProtocol: AnyObject {
     func addImageDataToCollectionView(imageData: Data)
-    func showError(with message: String)
+    func showReloadError(with message: String)
+    func showAlert(with title: String, message: String)
 }
 
 final class ImageCollectionViewController: UIViewController {
     private var images: [UIImage] = []
+    private var selectedCellIndex: Int?
+
     private let imageCollectionView = UICollectionView(frame: .zero,
                                                        collectionViewLayout: UICollectionViewFlowLayout())
     private var presenter: ImageCollectionPresenterProtocol?
@@ -45,7 +48,7 @@ extension ImageCollectionViewController: ImageCollectionViewControllerProtocol {
         }
     }
 
-    func showError(with message: String) {
+    func showReloadError(with message: String) {
         let alert = UIAlertController(title: "Error",
                                       message: message,
                                       preferredStyle: UIAlertController.Style.alert)
@@ -54,6 +57,14 @@ extension ImageCollectionViewController: ImageCollectionViewControllerProtocol {
                 await self?.presenter?.viewDidLoad()
             }
         })
+        alert.addAction(UIAlertAction(title: "Close", style: .default))
+        self.present(alert, animated: true, completion: nil)
+    }
+
+    func showAlert(with title: String, message: String) {
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Close", style: .default))
         self.present(alert, animated: true, completion: nil)
     }
@@ -77,8 +88,14 @@ private extension ImageCollectionViewController {
         navigationController?.navigationBar.backgroundColor = .white
 
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save,
-                                                                                  target: self,
-                                                                                  action: nil)
+                                                                 target: self,
+                                                                 action: #selector(saveCellImage))
+    }
+
+    @objc func saveCellImage() {
+        guard let selectedCellIndex = selectedCellIndex,
+              images.indices.contains(selectedCellIndex) else { return }
+        presenter?.saveImageToPhotoAlbum(image: images[selectedCellIndex])
     }
 }
 
@@ -95,6 +112,10 @@ extension ImageCollectionViewController: UICollectionViewDelegate, UICollectionV
         cell.configure(with: images[indexPath.row])
         return cell
     }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedCellIndex = indexPath.row
+    }
 }
 
 // MARK: - Collection view layout functions
@@ -110,9 +131,5 @@ extension ImageCollectionViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 24
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
     }
 }

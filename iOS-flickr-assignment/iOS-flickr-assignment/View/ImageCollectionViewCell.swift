@@ -30,7 +30,13 @@ final class ImageCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError()
     }
-    
+
+    override var isSelected: Bool {
+        didSet {
+            alpha = isSelected ? 0.4 : 1.0
+        }
+    }
+
     func configure(with image: UIImage) {
         imageView.image = image
     }

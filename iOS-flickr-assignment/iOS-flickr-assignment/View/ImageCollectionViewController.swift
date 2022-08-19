@@ -23,6 +23,8 @@ final class ImageCollectionViewController: UIViewController {
         self.presenter = ImageCollectionPresenter(imageDownloadService: ImageDownloadService(),
                                                   viewDelegate: self)
         setupCollectionView()
+        setupNavigationBar()
+
         Task {
             await presenter?.viewDidLoad()
         }
@@ -66,6 +68,17 @@ private extension ImageCollectionViewController {
         imageCollectionView.dataSource = self
         imageCollectionView.backgroundColor = UIColor.gray
         view.addSubview(imageCollectionView)
+    }
+
+    func setupNavigationBar() {
+        title = "Flickr Photos"
+        let navBarApp = UINavigationBarAppearance()
+        navigationController?.navigationBar.scrollEdgeAppearance = navBarApp
+        navigationController?.navigationBar.backgroundColor = .white
+
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save,
+                                                                                  target: self,
+                                                                                  action: nil)
     }
 }
 

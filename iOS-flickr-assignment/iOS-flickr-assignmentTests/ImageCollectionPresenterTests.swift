@@ -60,6 +60,7 @@ private final class MockService: ImageDownloadServiceProtocol {
     var fetchImageItemsCalled: Bool = false
     var fetchImageDataCalled: Bool = false
     var fetchImageDataError: Error?
+
     func fetchImageItems() async throws -> [ImageItem] {
         fetchImageItemsCalled = true
         return [ImageItem(id: "1", title: "test", url_sq: "urlstring")]
@@ -81,8 +82,12 @@ private final class MockViewController: ImageCollectionViewControllerProtocol {
     func addImageDataToCollectionView(imageData: Data) {
         addImageDataToCollectionViewCalled = true
     }
-    
-    func showError(with message: String) {
+
+    func showReloadError(with message: String) {
+        errorMessage = message
+    }
+
+    func showAlert(with title: String, message: String) {
         errorMessage = message
     }
 }

@@ -31,6 +31,15 @@ final class ImageCollectionPresenterTests: XCTestCase {
     func testPresenter_serviceReturnsImageData_shouldCallAddToCollectionView() async {
         await presenter.viewDidLoad()
         XCTAssertTrue(mockService.fetchImageItemsCalled)
+        XCTAssertEqual(mockService.fetchImageItemsString, "electrolux")
+        XCTAssertTrue(mockService.fetchImageDataCalled)
+        XCTAssertTrue(mockViewController.addImageDataToCollectionViewCalled)
+    }
+
+    func testPresenter_serviceReturnsImageData_shouldReturnImagesWithSearchString() async {
+        await presenter.searchImages(with: "testString")
+        XCTAssertTrue(mockService.fetchImageItemsCalled)
+        XCTAssertEqual(mockService.fetchImageItemsString, "testString")
         XCTAssertTrue(mockService.fetchImageDataCalled)
         XCTAssertTrue(mockViewController.addImageDataToCollectionViewCalled)
     }
@@ -58,10 +67,12 @@ private enum MockError: Error {
 
 private final class MockService: ImageDownloadServiceProtocol {
     var fetchImageItemsCalled: Bool = false
+    var fetchImageItemsString: String = ""
     var fetchImageDataCalled: Bool = false
     var fetchImageDataError: Error?
 
-    func fetchImageItems() async throws -> [ImageItem] {
+    func fetchImageItems(with string: String) async throws -> [ImageItem] {
+        fetchImageItemsString = string
         fetchImageItemsCalled = true
         return [ImageItem(id: "1", title: "test", url_sq: "urlstring")]
     }

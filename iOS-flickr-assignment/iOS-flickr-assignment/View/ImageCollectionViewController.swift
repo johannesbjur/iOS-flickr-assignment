@@ -19,6 +19,7 @@ final class ImageCollectionViewController: UIViewController {
 
     private let imageCollectionView = UICollectionView(frame: .zero,
                                                        collectionViewLayout: UICollectionViewFlowLayout())
+    private let searchController = UISearchController(searchResultsController: nil)
     private var presenter: ImageCollectionPresenterProtocol?
     
     override func viewDidLoad() {
@@ -27,7 +28,8 @@ final class ImageCollectionViewController: UIViewController {
                                                   viewDelegate: self)
         setupCollectionView()
         setupNavigationBar()
-
+        setupSearchBar()
+        
         Task {
             await presenter?.viewDidLoad()
         }
@@ -92,6 +94,11 @@ private extension ImageCollectionViewController {
                                                                  action: #selector(saveCellImage))
     }
 
+    func setupSearchBar() {
+        searchController.searchBar.delegate = self
+        navigationItem.searchController = searchController
+    }
+
     @objc func saveCellImage() {
         guard let selectedCellIndex = selectedCellIndex,
               images.indices.contains(selectedCellIndex) else { return }
@@ -131,5 +138,17 @@ extension ImageCollectionViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 24
+    }
+}
+
+// MARK: - Search controller delegate functions
+extension ImageCollectionViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchText = searchBar.text else { return }
+        images = []
+        imageCollectionView.reloadData()
+        Task {
+            await presenter?.searchImages(with: searchText)
+        }
     }
 }

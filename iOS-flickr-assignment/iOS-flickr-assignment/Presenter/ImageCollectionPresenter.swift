@@ -11,6 +11,7 @@ import UIKit
 protocol ImageCollectionPresenterProtocol {
     func viewDidLoad() async
     func saveImageToPhotoAlbum(image: UIImage)
+    func searchImages(with string: String) async
 }
 
 final class ImageCollectionPresenter: ImageCollectionPresenterProtocol {
@@ -23,8 +24,24 @@ final class ImageCollectionPresenter: ImageCollectionPresenterProtocol {
     }
 
     func viewDidLoad() async {
+        await fetchImages(with: "electrolux")
+    }
+
+    func saveImageToPhotoAlbum(image: UIImage) {
+        let imageSaver = ImageSaver(delegate: self)
+        imageSaver.saveToPhotoAlbum(image: image)
+    }
+
+    func searchImages(with string: String) async {
+        await fetchImages(with: string)
+    }
+}
+
+// MARK: - Private functions
+private extension ImageCollectionPresenter {
+    func fetchImages(with string: String) async {
         do {
-            for imageItem in try await imageDownloadService.fetchImageItems() {
+            for imageItem in try await imageDownloadService.fetchImageItems(with: string) {
                 guard let urlString = imageItem.url_sq,
                       let url = URL(string: urlString) else { continue }
                 let imageData = try await imageDownloadService.fetchImageData(from: url)
@@ -44,11 +61,6 @@ final class ImageCollectionPresenter: ImageCollectionPresenterProtocol {
         } catch {
             viewDelegate?.showReloadError(with: "Generic error")
         }
-    }
-
-    func saveImageToPhotoAlbum(image: UIImage) {
-        let imageSaver = ImageSaver(delegate: self)
-        imageSaver.saveToPhotoAlbum(image: image)
     }
 }
 

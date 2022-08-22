@@ -11,7 +11,8 @@ private enum Constants {
     static let domain = "https://flickr.com"
     static let path = "/services/rest"
     static let apiKey = "&api_key=8fc9186e406bb7d0a9ddb9c9bbd0db2f"
-    static let parameters = "?method=flickr.photos.search&tags=electrolux&per_page=20&page=1&format=json&extras=url_sq&nojsoncallback=true"
+    static let parameters = "?method=flickr.photos.search&per_page=20&page=1&format=json&extras=url_sq&nojsoncallback=true"
+    static let tags = "&tags="
 }
 
 enum ImageDownloadError: Error {
@@ -21,13 +22,13 @@ enum ImageDownloadError: Error {
 }
 
 protocol ImageDownloadServiceProtocol {
-    func fetchImageItems() async throws -> [ImageItem]
+    func fetchImageItems(with string: String) async throws -> [ImageItem]
     func fetchImageData(from url: URL) async throws -> Data
 }
 
 final class ImageDownloadService: ImageDownloadServiceProtocol {
-    func fetchImageItems() async throws -> [ImageItem] {
-        let urlString = Constants.domain + Constants.path + Constants.parameters + Constants.apiKey
+    func fetchImageItems(with string: String) async throws -> [ImageItem] {
+        let urlString = Constants.domain + Constants.path + Constants.parameters + Constants.apiKey + Constants.tags + string
         guard let url = URL(string: urlString) else { throw ImageDownloadError.urlParsingError }
 
         let (data, response) = try await URLSession.shared.data(from: url, delegate: nil)
